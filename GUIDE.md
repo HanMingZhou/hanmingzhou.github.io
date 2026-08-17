@@ -124,7 +124,7 @@ git commit -m "post: 新增文章 xxx"
 git push origin hexo
 ```
 
-流程：GitHub Actions（[.github/workflows/deploy.yml](.github/workflows/deploy.yml)）在 `hexo` 分支上 `npm ci` → `hexo generate` → 把 `public/` 推送到 `master` 分支 → GitHub Pages 发布 https://hanmingzhou.github.io 。一般 1-2 分钟生效，可在仓库 Actions 页查看进度。
+流程：GitHub Actions（[.github/workflows/deploy.yml](.github/workflows/deploy.yml)）在 `hexo` 分支上 `npm ci` → `hexo generate` → 把 `public/` 推送到 `master` 分支（`force_orphan`，每次都用最新产物完全覆盖 `master`，不保留旧历史）→ GitHub Pages 发布 https://hanmingzhou.github.io 。一般 1-2 分钟生效，可在仓库 Actions 页查看进度。
 
 首次使用需要确认两个仓库设置：
 
