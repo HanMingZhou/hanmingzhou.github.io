@@ -1,0 +1,129 @@
+# ParticleX 主题配置（覆盖 themes/particlex/_config.yml）
+# https://github.com/theme-particlex/hexo-theme-particlex
+
+# 头像
+avatar: /images/avatar.jpg
+
+# 首页背景图（多张时随机）
+background:
+    - /images/background.jpg
+
+# 加载动画
+loading: /images/loading.gif
+
+# 分类与标签的可选配色
+colors:
+    - "#ffa2c4"
+    - "#00bcd4"
+    - "#03a9f4"
+    - "#00a596"
+    - "#ff7d73"
+
+# 导航栏图标使用 Font Awesome 6：https://fontawesome.com
+menu:
+    首页:
+        name: house
+        theme: solid
+        link: /
+    关于:
+        name: id-card
+        theme: solid
+        link: /about
+    归档:
+        name: box-archive
+        theme: solid
+        link: /archives
+    分类:
+        name: bookmark
+        theme: solid
+        link: /categories
+    标签:
+        name: tags
+        theme: solid
+        link: /tags
+
+# 首页信息卡片
+card:
+    enable: true
+    description: |
+        Wheel turning, everything is ever new
+
+        一个人的世界，两个人的悲伤
+    iconLinks:
+        GitHub:
+            name: github
+            theme: brands
+            link: https://github.com/HanMingZhou
+    friendLinks:
+
+# 页脚
+footer:
+    since: 2024
+    ICP:
+        enable: false
+        code:
+        link:
+
+# Polyfill
+polyfill:
+    enable: true
+    features:
+        - default
+
+# 代码高亮（Highlight.js 样式可在 https://highlightjs.org/demo 挑选）
+highlight:
+    enable: true
+    style: github
+
+# KaTeX 数学公式
+math:
+    enable: false
+
+# 图片点击预览
+preview:
+    enable: true
+
+# 文章加密（需安装 hexo-helper-crypto）
+crypto:
+    enable: false
+
+# 归档页搜索（仅搜索标题）
+search:
+    enable: true
+
+# 评论系统，需要时把对应项 enable 改为 true 并填写参数
+giscus:
+    enable: false
+    src: https://giscus.app/client.js
+    repo:
+    repoID:
+    category:
+    categoryID:
+    mapping: pathname
+    strict: 0
+    reactionsEnabled: 1
+    emitMetadata: 0
+    inputPosition: bottom
+    theme: preferred_color_scheme
+    lang:
+
+gitalk:
+    enable: false
+    clientID:
+    clientSecret:
+    repo:
+    owner:
+    admin:
+    language:
+    proxy:
+
+waline:
+    enable: false
+    serverURL:
+
+twikoo:
+    enable: false
+    envID:
+    region:
+    path: location.pathname
+    lang:

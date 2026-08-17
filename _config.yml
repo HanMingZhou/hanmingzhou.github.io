@@ -1,0 +1,86 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+
+# Site
+title: 韩火火吃小兔のHexo
+subtitle: 一个人的世界,两个人的悲伤
+description: Wheel turning, everything is ever new
+keywords:
+author: Hanmingzhou
+language: zh-CN
+timezone: Asia/Shanghai
+
+# URL
+url: https://hanmingzhou.github.io
+permalink: posts/:abbrlink/
+permalink_defaults:
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude:
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+
+# ParticleX 与 Hexo 自带高亮不兼容，关闭内置高亮，由主题的 Highlight.js 接管
+syntax_highlighter:
+
+# Home page setting
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+updated_option: mtime
+
+# Pagination
+per_page: 10
+pagination_dir: page
+
+# ParticleX 没有年/月归档页
+archive_generator:
+  enabled: true
+  per_page: 0
+  yearly: false
+  monthly: false
+  daily: false
+
+# 短链接，保持原有 /posts/xxxxxxxx/ 形式的文章地址
+abbrlink:
+  alg: crc32
+  rep: hex
+
+# Extensions
+theme: particlex
+
+# Deployment（部署由 GitHub Actions 完成，见 .github/workflows/deploy.yml）
+deploy:
+  type: ''
