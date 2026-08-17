@@ -23,27 +23,9 @@ colors:
 # https://fontawesome.com
 
 # Main menu navigation
+# 菜单项在仓库根目录的 _config.particlex.yml 中定义。
+# Hexo 对主题配置是深合并，这里保留默认项会与自定义项同时出现在导航栏。
 menu:
-    Home:
-        name: house
-        theme: solid
-        link: /
-    About:
-        name: id-card
-        theme: solid
-        link: /about
-    Archives:
-        name: box-archive
-        theme: solid
-        link: /archives
-    Categories:
-        name: bookmark
-        theme: solid
-        link: /categories
-    Tags:
-        name: tags
-        theme: solid
-        link: /tags
 
 # Side info card
 card:
@@ -53,7 +35,6 @@ card:
         ...
     iconLinks:
     friendLinks:
-        Argvchs: https://argvchs.github.io
 
 # Footer info
 footer:
