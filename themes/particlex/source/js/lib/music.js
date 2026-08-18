@@ -22,19 +22,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (config.audio && config.audio.length) return create(config.audio);
 
-    const url = `${config.api}?server=${config.server}&type=${config.type}&id=${config.id}`;
-    fetch(url)
-        .then((response) => response.json())
-        .then((songs) =>
-            create(
-                songs.map((song) => ({
+    const sources = (config.list && config.list.length ? config.list : [config]).filter((source) => source.id);
+    const fetchSource = (source) => {
+        const server = source.server || config.server;
+        const type = source.type || config.type;
+        const url = `${config.api}?server=${server}&type=${type}&id=${source.id}`;
+        return fetch(url)
+            .then((response) => response.json())
+            .then((songs) =>
+                (Array.isArray(songs) ? songs : []).map((song) => ({
                     name: song.name,
                     artist: song.artist,
                     url: song.url,
                     cover: song.pic,
                     lrc: config.lrc ? song.lrc : undefined,
                 })),
-            ),
-        )
-        .catch(() => container.remove());
+            )
+            .catch(() => []);
+    };
+
+    Promise.all(sources.map(fetchSource)).then((results) => create(results.flat()));
 });

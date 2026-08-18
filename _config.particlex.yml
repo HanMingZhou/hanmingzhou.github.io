@@ -100,13 +100,18 @@ visitors:
     enable: true
     src: https://cn.vercount.one/js
 
-# 音乐播放器（APlayer + Meting，id 为歌单/单曲 ID）
+# 音乐播放器（APlayer + Meting）
 music:
     enable: true
     api: https://api.injahow.cn/meting/
     server: netease
-    type: playlist
-    id: 3778678 # 网易云「飙升榜」，可换成自己的歌单 ID
+    type: song # 单曲用 song，歌单用 playlist
+    # 可以填多个来源（单曲/歌单混填），会依次拼成一个播放列表
+    list:
+        - id: 1298442781 # 一个人的寂寞两个人的错 - 群星
+        - id: 382649 # 不是因为寂寞才想你 - T.R.Y.
+        # - type: playlist
+        #   id: 3778678 # 网易云「飙升榜」
     fixed: true
     mini: true
     autoplay: false
