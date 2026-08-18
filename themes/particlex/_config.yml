@@ -97,6 +97,7 @@ music:
     fixed: true
     mini: true
     autoplay: false
+    lrc: false # Scrolling lyrics, they overlay the page while playing
     volume: 0.7
     order: list # list, random
     loop: all # all, one, none

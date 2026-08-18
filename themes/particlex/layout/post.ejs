@@ -9,7 +9,7 @@
             </span>
             <%= date(page.date, "YYYY/M/D") %>
         </span>
-        <% if (theme.readTime.enable && page.length) { %>
+        <% if (theme.readTime.enable && is_post() && page.length) { %>
         <span class="read-time">
             <span class="icon">
                 <i class="fa-solid fa-file-lines fa-fw"></i>
@@ -21,7 +21,7 @@
             <%= symbolsTime(page) %>
         </span>
         <% } %>
-        <% if (theme.visitors.enable) { %>
+        <% if (theme.visitors.enable && is_post()) { %>
         <span class="views">
             <span class="icon">
                 <i class="fa-solid fa-eye fa-fw"></i>

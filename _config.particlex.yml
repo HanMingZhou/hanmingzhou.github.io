@@ -110,6 +110,7 @@ music:
     fixed: true
     mini: true
     autoplay: false
+    lrc: false # 滚动歌词（会浮在页面上，默认关闭）
     volume: 0.7
     order: list
     loop: all

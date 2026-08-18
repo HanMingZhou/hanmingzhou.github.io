@@ -131,6 +131,7 @@ source/_posts/my-post/cover.jpg
 
 -   `id`：网易云歌单 ID（歌单链接 `music.163.com/#/playlist?id=xxxx` 中的数字），`server` 可换 `tencent`、`kugou` 等，`type` 可为 `playlist` / `song` / `album`。
 -   `mini`、`fixed`、`autoplay`、`volume`、`order`、`loop`：播放器外观与播放行为（浏览器策略会阻止未交互时自动播放，`autoplay` 建议保持 `false`）。
+-   `lrc`：滚动歌词，默认关闭；打开后歌词会浮在页面右下角，长页面底部可能与页脚重叠。
 -   `audio`：想固定几首歌、不依赖第三方接口时，直接写 `name` / `artist` / `url` / `cover` 列表，优先级高于 `id` 歌单。
 
 其他评论系统（Gitalk / Waline / Twikoo）同样在 `_config.particlex.yml` 中把对应块 `enable` 改为 `true` 并填参数，参数含义见[主题文档](https://github.com/theme-particlex/hexo-theme-particlex#34-评论配置)。

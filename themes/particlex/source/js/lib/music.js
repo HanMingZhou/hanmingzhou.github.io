@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             loop: config.loop,
             preload: "none",
             listFolded: true,
-            lrcType: 3,
+            lrcType: config.lrc ? 3 : 0,
         });
     };
 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     artist: song.artist,
                     url: song.url,
                     cover: song.pic,
-                    lrc: song.lrc,
+                    lrc: config.lrc ? song.lrc : undefined,
                 })),
             ),
         )
