@@ -121,12 +121,12 @@ music:
 # 启用前需要：仓库 Settings 打开 Discussions，并安装 https://github.com/apps/giscus
 # 然后在 https://giscus.app 生成并把 category / categoryID 填到下面
 giscus:
-    enable: false
+    enable: true
     src: https://giscus.app/client.js
     repo: HanMingZhou/hanmingzhou.github.io
     repoID: R_kgDONMLmTA
     category: Announcements
-    categoryID:
+    categoryID: DIC_kwDONMLmTM4DDnLc
     mapping: pathname
     strict: 0
     reactionsEnabled: 1

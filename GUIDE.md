@@ -108,14 +108,15 @@ source/_posts/my-post/cover.jpg
 
 ### 4.1 评论（giscus，GitHub 账号登录）
 
-评论存放在本仓库的 Discussions 里，读者用 GitHub 账号登录即可评论。启用步骤：
+评论存放在本仓库的 Discussions 里，读者用 GitHub 账号登录即可评论。已经配置好并启用（`Announcements` 分类），`mapping: pathname` 表示按文章路径对应一条 Discussion，第一条评论出现时才会自动建 Discussion。
+
+以后若换仓库或换分类，需要：
 
 1. 仓库 Settings → General → Features 勾选 **Discussions**。
-2. 安装 [giscus App](https://github.com/apps/giscus) 并授权本仓库。
-3. 打开 [giscus.app](https://giscus.app)，填入 `HanMingZhou/hanmingzhou.github.io`，选择「Discussion 分类」（建议 `Announcements`），把生成代码里的 `data-category-id` 复制到 `_config.particlex.yml` 的 `giscus.categoryID`。
-4. 把 `giscus.enable` 改为 `true`，push 到 `hexo` 分支。
+2. 安装 [giscus App](https://github.com/apps/giscus) 并授权该仓库。
+3. 打开 [giscus.app](https://giscus.app) 生成代码，把 `data-repo-id` / `data-category` / `data-category-id` 抄到 `_config.particlex.yml` 的 `giscus` 段。
 
-`repo` 与 `repoID` 已经填好，`mapping: pathname` 表示按文章路径对应一条 Discussion。
+临时关评论：把 `giscus.enable` 改成 `false`。
 
 ### 4.2 访问量统计
 
