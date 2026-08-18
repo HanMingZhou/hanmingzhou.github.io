@@ -142,6 +142,15 @@ source/_posts/my-post/cover.jpg
     ```
 
     只有一个来源时也可以不写 `list`，直接用最外层的 `type` + `id`。`server` 默认 `netease`，可换 `tencent`、`kugou` 等。单个来源解析失败会被跳过，全部失败时播放器不显示。
+-   **只播 30 秒怎么办**：这是音乐平台对会员/独家版权曲目的试听限制（未登录的公开接口只给 30 秒片段），不是播放器的问题。挑同名的非会员版本即可拿到完整音频，判断方法：
+
+    ```bash
+    curl -s -G https://music.163.com/api/search/get --data-urlencode "s=歌名" -d type=1 -d limit=10 \
+      | python3 -c "import sys,json;[print(s['id'],s['name'],[a['name'] for a in s['artists']],'fee',s['fee'],s['duration']//1000) for s in json.load(sys.stdin)['result']['songs']]"
+    ```
+
+    `fee` 为 `1` / `8` 的是会员曲（只有 30 秒），`fee: 0` 的是免费曲，把它的 `id` 填进 `list` 即可。想听会员原唱只能自己买好音频文件，放 `source/music/` 里再用下面的 `audio` 直接指本站 URL。
+
 -   `mini`、`fixed`、`autoplay`、`volume`、`order`、`loop`：播放器外观与播放行为（浏览器策略会阻止未交互时自动播放，`autoplay` 建议保持 `false`）。
 -   `lrc`：滚动歌词，默认关闭；打开后歌词会浮在页面右下角，长页面底部可能与页脚重叠。
 -   `audio`：想固定几首歌、不依赖第三方接口时，直接写 `name` / `artist` / `url` / `cover` 列表，优先级高于 `list`。
