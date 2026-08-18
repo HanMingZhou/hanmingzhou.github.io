@@ -64,6 +64,29 @@ Always verify the served HTML reflects the edit before judging the UI.
   confirm `#music` is removed rather than leaving an empty shell.
 - `fixed: true` APlayer renders bottom-**left** by default and its lyrics panel can
   overlap the footer; check the very bottom of a long post page for overlap.
+- **APlayer puts its `aplayer` classes on the container element itself**, so `#music`
+  *is* the `.aplayer` element. Descendant CSS like `#music .aplayer.aplayer-fixed` never
+  matches — the working form is same-element `#music.aplayer.aplayer-fixed` (also for
+  `.aplayer-body` / `.aplayer-lrc` overrides). Verify at runtime with
+  `getComputedStyle(document.getElementById('music')).left` (`auto` = right-anchored)
+  and `getBoundingClientRect().right ≈ innerWidth`.
+- After right-anchoring a fixed player, check the **expanded** state too: upstream
+  APlayer ships `.aplayer.aplayer-fixed.aplayer-narrow .aplayer-body { width:66px!important }`,
+  which can leave the expanded player as a ~66px white sliver with the title/controls/
+  playlist clipped off-screen. Symptom check:
+  `getComputedStyle(document.querySelector('#music .aplayer-body')).width` staying `66px`
+  while the player looks "open". A width override on the body may be needed in theme CSS.
+- With `music.lrc: true`, the `.aplayer-lrc` overlay is `position:fixed; bottom:10px; z-index:98`
+  while the body is z-index 99 — right-aligned lyrics can end up hidden *behind* the player
+  itself. Inspect the `.aplayer-lrc-current` rect vs the body rect, not just the screenshot.
+- NetEase member/exclusive tracks return a **30-second trial** audio via Meting; if a
+  duration shows `00:30`, suspect the source rather than the player. Pick `fee: 0` tracks
+  and confirm with `ffprobe` or the displayed total duration (e.g. 04:20 / 03:33).
+- Multi-source `music.list` testing: put one valid + one bogus id (e.g. `999999999999`,
+  Meting answers `{"error":"unknown song"}`) → player must survive with only the valid
+  track and no phantom row; make all ids bogus → `document.getElementById('music')`
+  must be `null` with zero `.aplayer` nodes. Restart the server after every config edit
+  and confirm the served `data-config` before judging the UI.
 - giscus: with `giscus.enable: false` the post HTML should contain zero `giscus`
   occurrences. To smoke-test the template, temporarily set `enable: true` with a
   fake `categoryID` (e.g. `DIC_kwDOTESTFAKE`); giscus will log
