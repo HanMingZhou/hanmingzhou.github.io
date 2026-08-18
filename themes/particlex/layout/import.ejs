@@ -53,4 +53,12 @@
 <% if (type === "index") { %>
 <script src="<%- url_for("/js/lib/home.js") %>"></script>
 <% } %>
+<% if (theme.visitors.enable) { %>
+<script defer src="<%- theme.visitors.src %>"></script>
+<% } %>
+<% if (theme.music.enable) { %>
+<link rel="stylesheet" href="https://s4.zstatic.net/ajax/libs/aplayer/1.10.1/APlayer.min.css" />
+<script src="https://s4.zstatic.net/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
+<script src="<%- url_for("/js/lib/music.js") %>"></script>
+<% } %>
 <link rel="stylesheet" href="<%- url_for("/css/main.css") %>" />

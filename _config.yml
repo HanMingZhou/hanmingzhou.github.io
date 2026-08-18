@@ -78,6 +78,17 @@ abbrlink:
   alg: crc32
   rep: hex
 
+# 字数统计与预计阅读时间（hexo-symbols-count-time）
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: false
+  total_time: false
+  exclude_codeblock: false
+  awl: 2
+  wpm: 275
+  suffix: 分钟
+
 # Extensions
 theme: particlex
 

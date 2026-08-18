@@ -91,13 +91,40 @@ crypto:
 search:
     enable: true
 
-# 评论系统，需要时把对应项 enable 改为 true 并填写参数
+# 字数统计与预计阅读时间（由 hexo-symbols-count-time 计算，参数见 _config.yml）
+readTime:
+    enable: true
+
+# 访问量统计（Vercount，不蒜子的替代品，无需注册）
+visitors:
+    enable: true
+    src: https://cn.vercount.one/js
+
+# 音乐播放器（APlayer + Meting，id 为歌单/单曲 ID）
+music:
+    enable: true
+    api: https://api.injahow.cn/meting/
+    server: netease
+    type: playlist
+    id: 3778678 # 网易云「飙升榜」，可换成自己的歌单 ID
+    fixed: true
+    mini: true
+    autoplay: false
+    volume: 0.7
+    order: list
+    loop: all
+    # 若想固定几首歌（不依赖 Meting 接口），在这里写 url 即可，优先级高于上面的歌单
+    audio:
+
+# 评论系统：giscus（GitHub 账号登录，评论存在仓库 Discussions 里）
+# 启用前需要：仓库 Settings 打开 Discussions，并安装 https://github.com/apps/giscus
+# 然后在 https://giscus.app 生成并把 category / categoryID 填到下面
 giscus:
     enable: false
     src: https://giscus.app/client.js
-    repo:
-    repoID:
-    category:
+    repo: HanMingZhou/hanmingzhou.github.io
+    repoID: R_kgDONMLmTA
+    category: Announcements
     categoryID:
     mapping: pathname
     strict: 0
@@ -105,7 +132,7 @@ giscus:
     emitMetadata: 0
     inputPosition: bottom
     theme: preferred_color_scheme
-    lang:
+    lang: zh-CN
 
 gitalk:
     enable: false

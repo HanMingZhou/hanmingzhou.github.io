@@ -74,6 +74,39 @@ crypto:
 search:
     enable: false
 
+# Word count and estimated reading time
+# Requires the hexo-symbols-count-time plugin
+readTime:
+    enable: false
+
+# Site visitor counter
+# Vercount (drop-in replacement of Busuanzi): https://vercount.one
+visitors:
+    enable: false
+    src: https://cn.vercount.one/js
+
+# Music player
+# APlayer: https://aplayer.js.org
+music:
+    enable: false
+    # Meting API used to resolve the playlist: https://github.com/injahow/meting-api
+    api: https://api.injahow.cn/meting/
+    server: netease # netease, tencent, kugou, xiami, baidu
+    type: playlist # playlist, song, album, artist, search
+    id:
+    fixed: true
+    mini: true
+    autoplay: false
+    volume: 0.7
+    order: list # list, random
+    loop: all # all, one, none
+    # Optional fixed track list, takes precedence over the Meting API
+    audio:
+    #    - name:
+    #      artist:
+    #      url:
+    #      cover:
+
 # giscus
 # https://github.com/giscus/giscus
 giscus:
