@@ -94,6 +94,10 @@ music:
     server: netease # netease, tencent, kugou, xiami, baidu
     type: playlist # playlist, song, album, artist, search
     id:
+    # Optional multiple sources, each entry may override server / type; concatenated into one playlist
+    list:
+    #    - type: song
+    #      id:
     fixed: true
     mini: true
     autoplay: false

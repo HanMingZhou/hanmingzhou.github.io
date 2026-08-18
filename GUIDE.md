@@ -128,12 +128,23 @@ source/_posts/my-post/cover.jpg
 
 ### 4.4 音乐播放器
 
-右下角固定的 [APlayer](https://aplayer.js.org) 迷你播放器，歌单通过 Meting 接口解析。在 `_config.particlex.yml` 的 `music` 中配置：
+右下角固定的 [APlayer](https://aplayer.js.org) 迷你播放器，歌曲/歌单通过 Meting 接口解析。在 `_config.particlex.yml` 的 `music` 中配置：
 
--   `id`：网易云歌单 ID（歌单链接 `music.163.com/#/playlist?id=xxxx` 中的数字），`server` 可换 `tencent`、`kugou` 等，`type` 可为 `playlist` / `song` / `album`。
+-   `list`：可以填多个来源，每项一个 `id`，依次拼成一个播放列表；单项可单独写 `type` / `server` 覆盖外层默认值，所以单曲和歌单可以混填：
+
+    ```yaml
+    type: song # 外层默认类型
+    list:
+        - id: 1298442781 # 单曲，链接 music.163.com/#/song?id=xxxx 中的数字
+        - id: 382649
+        - type: playlist # 单项覆盖成歌单
+          id: 3778678 # 链接 music.163.com/#/playlist?id=xxxx 中的数字
+    ```
+
+    只有一个来源时也可以不写 `list`，直接用最外层的 `type` + `id`。`server` 默认 `netease`，可换 `tencent`、`kugou` 等。单个来源解析失败会被跳过，全部失败时播放器不显示。
 -   `mini`、`fixed`、`autoplay`、`volume`、`order`、`loop`：播放器外观与播放行为（浏览器策略会阻止未交互时自动播放，`autoplay` 建议保持 `false`）。
 -   `lrc`：滚动歌词，默认关闭；打开后歌词会浮在页面右下角，长页面底部可能与页脚重叠。
--   `audio`：想固定几首歌、不依赖第三方接口时，直接写 `name` / `artist` / `url` / `cover` 列表，优先级高于 `id` 歌单。
+-   `audio`：想固定几首歌、不依赖第三方接口时，直接写 `name` / `artist` / `url` / `cover` 列表，优先级高于 `list`。
 
 其他评论系统（Gitalk / Waline / Twikoo）同样在 `_config.particlex.yml` 中把对应块 `enable` 改为 `true` 并填参数，参数含义见[主题文档](https://github.com/theme-particlex/hexo-theme-particlex#34-评论配置)。
 
