@@ -30,6 +30,14 @@
             </span>
             <%- date(post.date, "YYYY/M/D") %>
         </span>
+        <% if (theme.readTime.enable && post.length) { %>
+        <span class="read-time">
+            <span class="icon">
+                <i class="fa-solid fa-clock fa-fw"></i>
+            </span>
+            <%= symbolsTime(post) %>
+        </span>
+        <% } %>
         <% if (theme.crypto.enable && typeof post.secret !== "undefined") { %>
         <span class="special">
             <i class="fa-solid fa-lock fa-fw"></i>

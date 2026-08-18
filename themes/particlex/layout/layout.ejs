@@ -51,6 +51,9 @@
         </transition>
         <% } %>
     </div>
+    <% if (theme.music.enable) { %>
+    <div id="music" data-config="<%= JSON.stringify(theme.music) %>"></div>
+    <% } %>
     <script src="<%- url_for("/js/main.js") %>"></script>
     <% if (type === "post" && page.comments) { %>
     <%- partial("comment") %>

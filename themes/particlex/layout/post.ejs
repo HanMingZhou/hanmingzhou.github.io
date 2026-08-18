@@ -9,6 +9,26 @@
             </span>
             <%= date(page.date, "YYYY/M/D") %>
         </span>
+        <% if (theme.readTime.enable && page.length) { %>
+        <span class="read-time">
+            <span class="icon">
+                <i class="fa-solid fa-file-lines fa-fw"></i>
+            </span>
+            <%= symbolsCount(page) %> 字
+            <span class="icon">
+                <i class="fa-solid fa-clock fa-fw"></i>
+            </span>
+            <%= symbolsTime(page) %>
+        </span>
+        <% } %>
+        <% if (theme.visitors.enable) { %>
+        <span class="views">
+            <span class="icon">
+                <i class="fa-solid fa-eye fa-fw"></i>
+            </span>
+            <span id="vercount_value_page_pv">-</span> 次阅读
+        </span>
+        <% } %>
         <% if (page.categories && page.categories.data.length !== 0) { %>
         <span class="category">
             <a href="<%- url_for(page.categories.data[0].path) %>">

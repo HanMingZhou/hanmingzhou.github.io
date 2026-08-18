@@ -106,7 +106,34 @@ source/_posts/my-post/cover.jpg
 
 导航栏、卡片里的图标名取自 [Font Awesome 6](https://fontawesome.com/icons)，`name` 填图标名，`theme` 填 `solid` / `regular` / `brands`。
 
-想开评论（giscus / Gitalk / Waline / Twikoo 任选其一）：在 `_config.particlex.yml` 中把对应块的 `enable` 改为 `true` 并填参数，参数含义见[主题文档](https://github.com/theme-particlex/hexo-theme-particlex#34-评论配置)。
+### 4.1 评论（giscus，GitHub 账号登录）
+
+评论存放在本仓库的 Discussions 里，读者用 GitHub 账号登录即可评论。启用步骤：
+
+1. 仓库 Settings → General → Features 勾选 **Discussions**。
+2. 安装 [giscus App](https://github.com/apps/giscus) 并授权本仓库。
+3. 打开 [giscus.app](https://giscus.app)，填入 `HanMingZhou/hanmingzhou.github.io`，选择「Discussion 分类」（建议 `Announcements`），把生成代码里的 `data-category-id` 复制到 `_config.particlex.yml` 的 `giscus.categoryID`。
+4. 把 `giscus.enable` 改为 `true`，push 到 `hexo` 分支。
+
+`repo` 与 `repoID` 已经填好，`mapping: pathname` 表示按文章路径对应一条 Discussion。
+
+### 4.2 访问量统计
+
+由 [Vercount](https://vercount.one)（不蒜子的替代品，免注册）提供：页脚显示站点总访问量与访客数，文章页显示该篇阅读次数。开关在 `_config.particlex.yml` 的 `visitors`。本地 `hexo server` 下统计的是 `localhost` 的数据，属正常现象。
+
+### 4.3 预计阅读时间
+
+由 `hexo-symbols-count-time` 插件统计正文字数并换算：文章页显示「字数 + 预计阅读时间」，首页列表显示预计阅读时间。开关在 `_config.particlex.yml` 的 `readTime`，换算参数（`awl` 每词字符数、`wpm` 每分钟词数、`suffix` 后缀）在 `_config.yml` 的 `symbols_count_time`。
+
+### 4.4 音乐播放器
+
+右下角固定的 [APlayer](https://aplayer.js.org) 迷你播放器，歌单通过 Meting 接口解析。在 `_config.particlex.yml` 的 `music` 中配置：
+
+-   `id`：网易云歌单 ID（歌单链接 `music.163.com/#/playlist?id=xxxx` 中的数字），`server` 可换 `tencent`、`kugou` 等，`type` 可为 `playlist` / `song` / `album`。
+-   `mini`、`fixed`、`autoplay`、`volume`、`order`、`loop`：播放器外观与播放行为（浏览器策略会阻止未交互时自动播放，`autoplay` 建议保持 `false`）。
+-   `audio`：想固定几首歌、不依赖第三方接口时，直接写 `name` / `artist` / `url` / `cover` 列表，优先级高于 `id` 歌单。
+
+其他评论系统（Gitalk / Waline / Twikoo）同样在 `_config.particlex.yml` 中把对应块 `enable` 改为 `true` 并填参数，参数含义见[主题文档](https://github.com/theme-particlex/hexo-theme-particlex#34-评论配置)。
 
 升级主题：
 

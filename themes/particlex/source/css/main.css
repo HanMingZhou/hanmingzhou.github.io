@@ -833,6 +833,20 @@ ol li {
         transform: rotate(480deg);
     }
 }
+.article .info .read-time,
+.article .info .views,
+#home-posts .post .category-and-date .read-time {
+    display: inline-block;
+    margin-right: 10px;
+}
+#footer #footer-visitors span {
+    display: inline-block;
+    margin: 0 10px;
+}
+#music .aplayer {
+    margin: 0;
+    z-index: 20;
+}
 @media (min-width: 900px) {
     #home-head #home-info .info .wrap {
         padding: 25px;
